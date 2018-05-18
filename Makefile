@@ -1,16 +1,16 @@
-CC = g++
 CXXFLAGS += -std=c++11 -pedantic -pedantic-errors -Wall -Weffc++ -Wextra -Wcast-align -Wcast-qual -Wconversion \
     -Wdisabled-optimization -Werror -Wfloat-equal -Wformat=2 -Wformat-nonliteral -Wformat-security -Wformat-y2k \
-    -Wimport -Winit-self -Winvalid-pch -Wmissing-field-initializers -Wmissing-format-attribute  -Wmissing-include-dirs \
-    -Wmissing-noreturn -Wpacked -Wpadded -Wpointer-arith -Wredundant-decls -Wshadow -Wstack-protector \
-    -Wstrict-aliasing=2 -Wswitch-default -Wswitch-enum -Wunreachable-code -Wunused -Wunused-parameter \
-    -Wvariadic-macros -Wwrite-strings
+    -Wimport -Winit-self -Winvalid-pch -Wmissing-field-initializers -Wmissing-format-attribute \
+    -Wmissing-include-dirs -Wmissing-noreturn -Wpacked -Wpadded -Wpointer-arith -Wredundant-decls -Wshadow \
+    -Wstack-protector -Wstrict-aliasing=2 -Wswitch-default -Wswitch-enum -Wunreachable-code -Wunused \
+    -Wunused-parameter -Wvariadic-macros -Wwrite-strings
+LDFLAGS += -lstdc++
 
 #ifeq (DEBUG, 1)
-CXXFLAGS += -g -O
+CXXFLAGS += -g -O0
 #endif
 
-export CXXFLAGS CC
+export CXXFLAGS LDFLAGS
 
 .PHONY: clean
 .PHONY: tests
