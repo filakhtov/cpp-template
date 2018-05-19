@@ -6,14 +6,17 @@ CXXFLAGS += -std=c++11 -pedantic -pedantic-errors -Wall -Weffc++ -Wextra -Wcast-
     -Wunused-parameter -Wvariadic-macros -Wwrite-strings
 LDFLAGS += -lstdc++
 
-#ifeq (DEBUG, 1)
+ifeq ($(DEBUG), 1)
 CXXFLAGS += -g -O0
-#endif
+endif
 
 export CXXFLAGS LDFLAGS
 
+.PHONY: all
 .PHONY: clean
 .PHONY: tests
+
+all: buildflags.txt
 
 clean:
 	$(MAKE) -C tests clean

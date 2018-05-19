@@ -1,16 +1,22 @@
 # C++ Template
-This is template for C++ projects with test runner based on [CppUnit](https://freedesktop.org/wiki/Software/cppunit/).
+This is template for C++ projects with test runner based on
+[CppUnit](https://freedesktop.org/wiki/Software/cppunit/).
 It uses __GNU C++ compiler__ from [GNU Compiler Collection](https://gcc.gnu.org/) as compiler and `Makefile`s are
 tested using [GNU make](https://www.gnu.org/software/make/).
 
 ## Makefile
-A strict set of `CXXFLAGS` is predefined in `Makefile` and passing `DEBUG=1` to `make` command will also enable `g++`
-debug mode (`-g` flag) and disable optimization (`-O` flag).
+A strict set of `CXXFLAGS` is predefined in `Makefile` and passing `DEBUG=1` to `make` command will also enable
+`g++` debug mode (`-g` flag) and disable optimization (`-O0` flag).
 
-Only two _phony_ `make` targets are defined by default:
+Three _phony_ `make` targets are defined by default:
+- `all` target is empty and is designed to host rules for actual application build.
 - `clean` target delegates to `tests/Makefile` which removes `tests/*.o` and `tests/tests-runner` files;
-- `tests` target also delegates to `tests/Makefile` which builds `tests/tests-runner` and executes it with `compiler`
-option (more information provided below).
+- `tests` target also delegates to `tests/Makefile` which builds `tests/tests-runner` and executes it with
+`compiler` option (more information provided below).
+
+`clean` target will be automatically executed before `tests` or `all` targets if either `CXXFLAGS` or `LDFLAGS`
+change. This applies to changing `DEBUG` variable as well. This is to avoid potentiall mess of objects built using
+different flag sets.
 
 ## Testing
 A number of changes are necessary in order to add more tests into test suite:
