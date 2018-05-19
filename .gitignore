@@ -1,2 +1,3 @@
 *.o
+/buildflags.txt
 /tests/tests-runner
