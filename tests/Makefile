@@ -2,10 +2,10 @@ LDFLAGS += -lcppunit
 
 export LDFLAGS
 
-.PHONY: tests
+.PHONY: all
 .PHONY: clean
 
-tests: tests-runner
+all: tests-runner
 	./tests-runner compiler
 
 clean:
